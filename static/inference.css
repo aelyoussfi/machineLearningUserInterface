@@ -1,0 +1,53 @@
+.form-container{
+    margin-left  : 20%;
+    /* align-items: center; */
+}
+.form{
+    text-align: left;
+}
+.form-field input[type="text"],
+.form-field input[type="text"],
+.form-field input[type="text"] {
+    border-radius: 15px;
+    /* Add any other desired styling */
+    height: 30px;
+}
+
+.submit-button {
+    border-radius: 5px;
+    margin-top: 50px;
+    height: 35px;
+    width: 160;
+    background-color: #405d79; /* Set your desired color */
+    color: #fff; /* Set desired text color */
+    /* Add any other desired styling */
+}
+.header{
+    text-align: right;
+}
+.submit-home {
+    margin-top: 5px;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    /* background-color: #405d79; Set your desired color */
+ 
+        background: linear-gradient(to right, #0452cf 0%, #288bb9 51%, #a6b2c5 100%);
+        animation: linear-gradient 6s ease infinite;
+        background-size: 500% 100%;
+        /* Add any other desired styling */
+        color: #0e0d0d
+      }
+      
+      @keyframes linear-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+     

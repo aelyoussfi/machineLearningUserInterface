@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="header">
+  <a href="/">
+    <button type="button" class="submit-home">
+      <img src="static/home.svg" alt="home"  height="40px"/>
+    </button>
+  </a>
+</div>
+<div class="form-container">
+  <div class="form">
+    <p>Enter integers for wanted Day and Hour bellow:</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-field">
+          available models:
+          {{ dict }}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.mmodel.id_for_label }}">My model: </label>
+            {{ form.mlmodel }}
+          </div>
+        
+        <div class="form-field">
+            <p class="date-disclaimer"> enter dates between these two dates: {{s_i}} and {{e_i}}</p>
+            <p class="date-format"> Dates must respect this form: YYYY-MM-DD: </p>
+          <label for="{{ form.start_date.id_for_label }}">Start date: </label>
+          {{ form.start_date }}
+        </div>
+
+        <div class="form-field">
+            <p class="date-format"> Dates must respect this form: YYYY-MM-DD: </p>
+
+            <label for="{{ form.end_date.id_for_label }}">End date:</label>
+            {{ form.end_date }}
+          </div>
+        <div>
+          <button type="submit" class="submit-button">Send</button>
+          
+        </div>
+        
+      </form>
+      <div id="loading-container" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Redirecting to inference page...</p>
+    </div>
+      <a href="/inference-results">
+        <button type="submit" class="submit-button" id="inference_button"> LAST INFERENCE</button>
+      </a>
+
+</div>
+</div>
+<script>
+  document.getElementById("inference_button").addEventListener("click", function(e) {
+    document.getElementById("loading-container").style.display="block";
+  })
+</script>
+    
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" href="static/home.css">
+    <link rel="stylesheet" href="static/inference.css">
+
+    <head>
+        <title>sold houses </title>
+        <link rel = "icon" href = "static/house.svg" 
+        type = "image/x-icon">
+    </head>
+    <body>
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
+    </body>
+    <footer>
+        <div class="redirecting-button">
+            <a href="/inference">
+              <button type="button" class="inference-redirecting">
+                Inference page
+              </button>
+            </a>
+          </div>
+    </footer>
+    <style>
+        body{
+    height: 100%;
+    color: white;
+    background: linear-gradient(60deg, #161615, #2e2e2d, #292325, #4d484e, #3a3e46);
+    animation: animatedgradient 6s ease infinite;
+    background-size: 500% 500%;
+    /* Add any other desired styling */
+  }
+  
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+
+    </style>
+    
+</html>

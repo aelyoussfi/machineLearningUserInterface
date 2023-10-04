@@ -1,0 +1,61 @@
+
+
+.submit-button {
+    
+    margin-top: 50px;
+    
+    /* background-color: #405d79; Set your desired color */
+ 
+        background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        animation: animatedgradient 6s ease infinite;
+        background-size: 500% 100%;
+        /* Add any other desired styling */
+        color: #fff
+      }
+      
+      @keyframes animatedgradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    
+
+.buttons{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: 25%;
+}
+#btn1{
+    border: #f7f7f1 solid;
+    font-size: 20px;
+    border-radius: 25px;
+    margin-right: 40px;
+    height: 80px;
+    width: 250px;
+}
+#btn2{
+    border: #f7f7f1 solid;
+    font-size: 20px;
+    border-radius: 25px;
+    margin-left: 40px;
+    height: 80px;
+    width: 250px;
+}
+
+.list-models{
+    font-size: 26px;
+    margin-left: 50px;
+}
+.list-models h1{
+    font-size: 56px;
+}

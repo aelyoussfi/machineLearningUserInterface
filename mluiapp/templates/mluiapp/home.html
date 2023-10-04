@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+    <div class="buttons">
+        <div>
+            <a href="/fitting">
+                <button type="submit" id="btn1" class="submit-button">TRAINING</button>
+            </a>
+        </div>
+        <div>
+            <a href="/inference">
+                <button type="submit" id="btn2" class="submit-button">INFERENCE</button>
+            </a>
+        </div>
+    </div>
+    <div>
+        <ul class="list-models">
+            <h1 >Models Used in this solution:</h1>
+            <li>
+                KNeighbors 
+            </li>
+            <li>
+                DecisionTree 
+            </li>
+            <li>
+                Gradient 
+            </li>
+            <li>
+                Boosting 
+            </li>
+            <li>
+                MLP 
+            </li>
+            <li>
+                RandomForest 
+            </li>
+            <li>
+                AdaBoost 
+            </li>
+            <li>
+                Grad Boosting
+            </li>
+        </ul>
+    </div>
+</div>
+
+    
+{% endblock content %}

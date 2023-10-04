@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="header">
+  <a href="/">
+    <button type="button" class="submit-home">
+      <img src="static/home.svg" alt="home"  height="40px"/>
+    </button>
+  </a>
+</div>
+{% for result in results %}
+    <div>Result</div>
+    <div>
+        {{ result.score }}
+    </div>
+    <div class="curve">
+      <div>
+          <h2>Curves</h2>
+          <canvas id="myChart"></canvas>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script>
+              // Access the photo_data from Django model in JavaScript
+              var inferenceData = JSON.parse('{{ result.data|escapejs }}');
+              console.log(inferenceData);
+          
+              // Extract keys and values from the dictionary
+              var labels = Object.keys(inferenceData);
+              var data = Object.values(inferenceData);
+          
+              // Create a new Chart.js chart
+              var ctx = document.getElementById('myChart').getContext('2d');
+              var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Solar Energy production in Kwh' ,
+                    data: data,
+                    borderColor: 'rgb(75, 192, 250)',
+                    fill: true
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  scales: {
+                    x: {
+                      display: true,
+                      title: {
+                        display: true,
+                        text: 'Dates',
+                        color: 'white'
+                      },
+                      color:'white'
+                    },
+                    y: {
+                      display: true,
+                      title: {
+                        display: true,
+                        text: 'number of houses sold',
+                        color: 'white'
+
+                      }
+                    }
+                  }
+                }
+              });
+            </script>
+      </div>
+{% empty %}
+    <div>No results available.</div>
+{% endfor %}
+    
+{% endblock content %}

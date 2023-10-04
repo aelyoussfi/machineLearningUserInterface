@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Home button -->
+<div class="header">
+  <a href="/">
+    <button type="button" class="submit-home">
+      Home page
+    </button>
+  </a>
+  
+</div>
+
+<!-- The form and the loadinf dynamics -->
+<div class="form-container">
+  <div class="form">
+    <p>Enter the name of the model you want to fit:</p>
+
+    <!-- The form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-field">
+            available models:
+            {{ dict_models }}
+        </div>
+        <div class="form-field">
+            <label for="{{ form.mlmodel_fitting.id_for_label }}">My model: </label>
+            {{ form.mlmodel_fitting }}
+        </div>
+        
+        <button type="submit" class="submit-button" id="train-button">Train</button>
+    </form>
+
+    <div id="loading-container"  class="loader" style="display: none;">
+      <style>
+     
+
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .loader-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: None;
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-circle:before {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 8px solid white;
+      border-color: white transparent white transparent;
+      animation: loader 1.2s linear infinite;
+    }
+
+    .loader-text {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    @keyframes loader {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+       0% {
+         transform: scale(0.8);
+         opacity: 0.5;
+       }
+       50% {
+         transform: scale(1);
+         opacity: 1;
+       }
+       100% {
+         transform: scale(0.8);
+         opacity: 0.5;
+       }
+     }
+      </style>
+      <div class="loader-circle"></div>
+      <span class="loader-text">Training the model...</span>
+    </div>
+
+    <div id="message-container" style="display: none;">
+        {% if message %}
+        <div class="message">
+            <img src="static/validate.svg" alt="validate" height="40px" class="green-validation"/>
+            <p class="message-content">{{ message }}</p>
+        </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+    document.getElementById("train-button").addEventListener("click", function() {
+        document.getElementById("loading-container").style.display = "block";
+        document.getElementById("message-container").style.display = "none";
+    });
+
+    // Simulating a delay to demonstrate the loading state
+    setTimeout(function() {
+        document.getElementById("loading-container").style.display = "none";
+        document.getElementById("message-container").style.display = "block";
+    }, 100); // Replace this with the actual code that triggers the message after the training process completes
+</script>
+<div>
+  <style>
+    .redirecting-button{
+      margin-bottom: 0px;
+    }
+    .green-validation{
+      background-color: none;
+      margin-bottom: 0px;
+    }
+    .message{
+      display: flex;
+    } 
+    .message-content{
+      font-size: 28px;
+    }
+    .inference-redirecting{
+      height: 80px;
+      width: 250px;
+      border-radius: 15px;
+      font-size: 30px;
+      margin-left  : 20%;
+      margin-top: 50px;
+    
+    /* background-color: #405d79; Set your desired color */
+ 
+        background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        animation: animatedgradient 6s ease infinite;
+        background-size: 500% 100%;
+        /* Add any other desired styling */
+        color: #fff
+      }
+      
+      @keyframes animatedgradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+    }
+  </style>
+  
+  
+</div>
+
+{% endblock content %}
